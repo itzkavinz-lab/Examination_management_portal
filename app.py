@@ -50,7 +50,11 @@ def admin_dashboard():
 def logout():
     session.clear()
     return redirect(url_for("login"))
-       
+  
+@app.route("/test-layout")
+def test_layout():
+    return render_template("base.html")
+         
 
 if __name__== "__main__":
     app.run(debug = True)
