@@ -1,0 +1,16 @@
+
+<!doctype html>
+<html lang ="en">
+    <head>
+        <title>Admin Dashboard</title>
+    </head>
+    <body>
+        <h1>Admin Dashboard<h1>
+            <p>Welcome, {{session["username"]}}!</p>
+            <p>you are logged in as administrator.<p>
+                <form ethod ="POST" action={{url_for('logout')}}>
+                    <button type = "Submit">Logout</button>
+                </form>
+            </body>
+            </html>
+            
