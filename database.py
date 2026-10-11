@@ -1,5 +1,8 @@
 import sqlite3
+import os
 from pathlib import Path
+from werkzeug.security import generate_password_hash
+
 
 BASE_DIR = Path(__file__).resolve().parent
 INSTANCE_DIR = BASE_DIR/ "instance"
@@ -11,6 +14,30 @@ def get_db_connection():
     connection.row_factory = sqlite3.Row
     connection.execute("PRAGMA foreign_keys = ON")
     return connection
+
+def create_initial_admin(conn):
+    admin_exists = conn.execute("SELECT id FROM users WHERE role = ? LIMIT 1", ("admin",)).fetchone()
+    if admin_exists:
+        print("Admin Account already exists ")
+        return
+    username = os.environ.get("ADMIN_USERNAME","admin")
+    email =  os.environ.get("ADMIN_EMAIL", "admin@example.com")
+    password = os.environ.get("ADMIN_PASSWORD")
+    if not password:
+        raise RuntimeError(
+            "Set the ADMIN_PASSWORD environment variable before"
+            "initialising the database"
+        )
+    password_hash = generate_password_hash(password)
+    conn.execute(
+    """
+    INSERT  INTO users (username,email,password_hash,role)
+    VALUES(?,?,?,?)
+    """,
+    (username,email,password,"admin")
+)
+    print("Initial Admin account created sucessfully")
+        
 
 def init_db():
     INSTANCE_DIR.mkdir(exist_ok=True)
@@ -148,6 +175,7 @@ def init_db():
                            
                            
                           """ )
+        create_initial_admin(conn)
         print("DATABASE INITIATED SUCESSFULLY")
         print(f"Database Location: {DATABASE_PATH}")
         
