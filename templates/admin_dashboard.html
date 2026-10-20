@@ -11,14 +11,17 @@
             <div class = "card shadow-sm border-0">
                 <div class = "card-body">
                     <h6 class = "text-secondary">Students</h6>
+                    <h3 class ="fw-bold">{{total_students }} </h3>
                     <p class = "mb-0 text-secondary small">Registered Students</p>
                 </div>
             </div>
         </div>
         <div class= "col-md-6 col-xl-3">
-            <div class = "card shadow -sm border-0">
+            <div class = "card shadow-sm border-0">
                 <div class = "card-body">
-                    <h6 class = "mb-0 text-secondary small">Registered Examiners</p>
+                    <h6 class = "mb-0 text-secondary">Examiners</h6>
+                    <h3 class ="fw-bold">{{total_examiners }} </h3>
+                    <p class = "mb-0 text-secondary small">Registered Examiners</p>
                     </div>
                 </div>
             </div>
@@ -26,6 +29,8 @@
                 <div class ="card shadow-sm border-0">
                     <div class = "card-body">
                         <h6 class = "text-secondary">Courses</h6>
+                         <h3 class ="fw-bold">{{total_courses }} </h3>
+
                         <p class ="mb-0 text-secondary small">Available courses</p>
                     </div>
                 </div>
@@ -34,17 +39,18 @@
                 <div class = "card shadow-sm border-0">
                     <div class = "card-body">
                         <h6 class = text-secondary>Examination</h6>
+                     <h3 class ="fw-bold">{{total_examinations }} </h3>
                         <p class = "mb-0 text-seondary small">Scheduled Examintion </p>
                     </div>
                 </div>
             </div>
-            <div class = "col-md-6 col-xl-3">
-                <div class ="card-shadow-sm border-0">
-                    <div class  = "card-body">
-                        <h6 class = "text-secondary">Examinations</h6>
-                        <p class = "mb=0 text-secondary small">Scheduled Information</p>
-                    </div>
-                </div>
+        </div>
+        <div class = "card shadow-sm border-0 mt-4">
+            <div class = "card-body">
+                <h5 class ="fw-bold">Getting started</h5>
+                <p class  "text-secondary mb-0">
+                    Use the sidebar to amange users,courses and examinations.
+                </p>
             </div>
         </div>
         {% endblock %}

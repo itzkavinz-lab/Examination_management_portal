@@ -44,7 +44,23 @@ def login():
 def admin_dashboard():
         if session.get("role") != "admin":
             return redirect(url_for("login"))
-        return render_template("admin_dashboard.html")
+        with get_db_connection()as conn:
+            total_students = conn.execute(
+                "SELECT COUNT(*) FROM students"
+            ).fetchone()[0]
+            total_examiners = conn.execute(
+                "SELECT COUNT(*) FROM examiners"
+            ).fetchone()[0]
+            total_courses = conn.execute(
+                "SELECT COUNT(*) FROM courses"
+            ).fetchone()[0]
+            total_examinations = conn.execute(
+                "SELECT COUNT(*) FROM examinations"
+            ).fetchone()[0]
+            
+            return render_template(
+                "admin_dashboard.html",total_students=total_students, total_examiners=total_examiners,total_courses=total_courses,total_examinations=total_examinations)
+            
     
 @app.route("/logout",methods =["POST"])
 def logout():
