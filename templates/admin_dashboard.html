@@ -1,16 +1,50 @@
-
-<!doctype html>
-<html lang ="en">
-    <head>
-        <title>Admin Dashboard</title>
-    </head>
-    <body>
-        <h1>Admin Dashboard<h1>
-            <p>Welcome, {{session["username"]}}!</p>
-            <p>you are logged in as administrator.<p>
-                <form method ="POST" action={{url_for('logout')}}>
-                    <button type = "Submit">Logout</button>
-                </form>
-            </body>
-            </html>
-
+{% extends "base.html" %}
+{% block title %}Admin Dashboard {% endblock %}
+{% block content%}
+<h2 class = "fw-bold mb-2">Admin Dashboard</h2>
+<p class = "text-secondary mb-4">
+        Welcome {{session.get("username")}}.
+        Manage THe examination system fromh here
+</p>
+<div class = "row g-3">
+        <div class = "col-md-6 col-xl-3">
+            <div class = "card shadow-sm border-0">
+                <div class = "card-body">
+                    <h6 class = "text-secondary">Students</h6>
+                    <p class = "mb-0 text-secondary small">Registered Students</p>
+                </div>
+            </div>
+        </div>
+        <div class= "col-md-6 col-xl-3">
+            <div class = "card shadow -sm border-0">
+                <div class = "card-body">
+                    <h6 class = "mb-0 text-secondary small">Registered Examiners</p>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-6 col-xl-3">
+                <div class ="card shadow-sm border-0">
+                    <div class = "card-body">
+                        <h6 class = "text-secondary">Courses</h6>
+                        <p class ="mb-0 text-secondary small">Available courses</p>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-6 col-xl-3">
+                <div class = "card shadow-sm border-0">
+                    <div class = "card-body">
+                        <h6 class = text-secondary>Examination</h6>
+                        <p class = "mb-0 text-seondary small">Scheduled Examintion </p>
+                    </div>
+                </div>
+            </div>
+            <div class = "col-md-6 col-xl-3">
+                <div class ="card-shadow-sm border-0">
+                    <div class  = "card-body">
+                        <h6 class = "text-secondary">Examinations</h6>
+                        <p class = "mb=0 text-secondary small">Scheduled Information</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
