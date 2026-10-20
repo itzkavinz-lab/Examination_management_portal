@@ -34,7 +34,7 @@ def create_initial_admin(conn):
     INSERT  INTO users (username,email,password_hash,role)
     VALUES(?,?,?,?)
     """,
-    (username,email,password,"admin")
+    (username,email,password_hash,"admin")
 )
     print("Initial Admin account created sucessfully")
         
@@ -70,7 +70,7 @@ def init_db():
                                name TEXT  NOT NULL,
                                department TEXT,
                                phone TEXT,
-                               status TEXT NOT NULL DEFAULT "pending"
+                               status TEXT NOT NULL DEFAULT "approved"
                                 CHECK (status in ('pending','approved','inactive')),
                                 FOREIGN KEY (user_id) REFERENCES users(id)
                            );
